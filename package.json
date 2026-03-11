@@ -1,0 +1,12 @@
+{
+  "name": "worldmesh",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source coordination platform for real-world problems.",
+  "scripts": {
+    "dev": "echo 'App scaffold not yet implemented'",
+    "build": "echo 'Build step not yet implemented'",
+    "lint": "echo 'Lint not yet implemented'",
+    "test": "echo 'Tests not yet implemented'"
+  }
+}
