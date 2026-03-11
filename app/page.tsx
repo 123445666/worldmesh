@@ -1,4 +1,6 @@
+import { DependencyGraph } from "../components/dependency-graph";
 import { ProblemOverview } from "../components/problem-overview";
+import { buildProblemGraph } from "../lib/graph-data";
 import { getLeverageActions, problems } from "../lib/mock-data";
 
 const activity = [
@@ -15,6 +17,8 @@ export default function HomePage() {
       action,
     })),
   );
+
+  const featuredGraph = buildProblemGraph(problems[0]);
 
   return (
     <main>
@@ -64,6 +68,17 @@ export default function HomePage() {
               <ProblemOverview key={problem.id} problem={problem} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <DependencyGraph
+            title="Dependency graph"
+            subtitle="A sample systems view for the Northside flooding problem."
+            nodes={featuredGraph.nodes}
+            edges={featuredGraph.edges}
+          />
         </div>
       </section>
 

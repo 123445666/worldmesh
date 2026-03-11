@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { DependencyGraph } from "../../../components/dependency-graph";
+import { buildProblemGraph } from "../../../lib/graph-data";
 import { getBlockedTasks, getLeverageActions, problems } from "../../../lib/mock-data";
 
 export function generateStaticParams() {
@@ -21,6 +23,7 @@ export default function ProblemDetailPage({ params }: { params: { id: string } }
 
   const blockedTasks = getBlockedTasks(problem);
   const leverageActions = getLeverageActions(problem);
+  const graph = buildProblemGraph(problem);
 
   return (
     <main className="section">
@@ -37,6 +40,13 @@ export default function ProblemDetailPage({ params }: { params: { id: string } }
           <p><strong>Location:</strong> {problem.location}</p>
           <p>{problem.summary}</p>
         </div>
+
+        <DependencyGraph
+          title="System dependency view"
+          subtitle="See how projects, tasks, and resources connect around this problem."
+          nodes={graph.nodes}
+          edges={graph.edges}
+        />
 
         <div className="detail-grid">
           <section className="panel">
