@@ -7,6 +7,9 @@
   --accent: #4dd4ac;
   --accent-2: #78a8ff;
   --danger: #f59e0b;
+  --blocked: #fb7185;
+  --planned: #a78bfa;
+  --done: #94a3b8;
 }
 
 * {
@@ -43,7 +46,8 @@ a {
 }
 
 .site-header-inner,
-.nav-list {
+.nav-list,
+.stats-row {
   display: flex;
   align-items: center;
 }
@@ -80,7 +84,8 @@ a {
 .hero .container,
 .two-col,
 .problems-grid,
-.docs-grid {
+.docs-grid,
+.detail-grid {
   display: grid;
   gap: 1.25rem;
 }
@@ -92,10 +97,11 @@ a {
 }
 
 .problems-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.docs-grid {
+.docs-grid,
+.detail-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -128,7 +134,8 @@ h2 {
 
 .lede,
 p,
-li {
+li,
+span {
   color: var(--muted);
   line-height: 1.7;
 }
@@ -173,6 +180,31 @@ li {
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.22);
 }
 
+.problem-overview {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.stats-row {
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.stats-row div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.stats-row strong,
+.task-chain strong,
+.activity-list strong,
+.problem-top h3,
+.panel h2,
+.panel h3,
+.brand {
+  color: var(--text);
+}
+
 .section.muted {
   background: rgba(4, 10, 20, 0.45);
 }
@@ -210,10 +242,35 @@ li {
   color: var(--danger);
 }
 
+.status.blocked {
+  background: rgba(251, 113, 133, 0.14);
+  color: var(--blocked);
+}
+
+.status.planned {
+  background: rgba(167, 139, 250, 0.14);
+  color: var(--planned);
+}
+
+.status.done {
+  background: rgba(148, 163, 184, 0.14);
+  color: var(--done);
+}
+
 .activity-list,
-.local-docs ul {
+.local-docs ul,
+.task-chain {
   padding-left: 1.1rem;
   margin: 0;
+}
+
+.task-chain li,
+.chain-card,
+.sidebar-stack,
+.detail-stack,
+.leverage-list li {
+  display: grid;
+  gap: 0.75rem;
 }
 
 .text-link {
@@ -238,7 +295,8 @@ li {
   .hero .container,
   .two-col,
   .problems-grid,
-  .docs-grid {
+  .docs-grid,
+  .detail-grid {
     grid-template-columns: 1fr;
   }
 }
