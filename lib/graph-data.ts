@@ -25,7 +25,7 @@ export function buildProblemGraph(problem: Problem) {
       tone: project.status === "blocked" ? "blocked" : project.status === "active" ? "active" : "normal",
     });
 
-    edges.push({ from: problem.title, to: project.title, label: "contains" });
+    edges.push({ from: problem.id, to: project.id, label: "contains" });
 
     for (const task of project.tasks) {
       nodes.push({
@@ -35,12 +35,12 @@ export function buildProblemGraph(problem: Problem) {
         tone: task.status === "blocked" ? "blocked" : task.status === "active" ? "active" : "normal",
       });
 
-      edges.push({ from: project.title, to: task.title, label: "work item" });
+      edges.push({ from: project.id, to: task.id, label: "work item" });
 
       for (const depId of task.dependsOn) {
         const depTask = project.tasks.find((entry) => entry.id === depId);
         if (depTask) {
-          edges.push({ from: depTask.title, to: task.title, label: "unlocks" });
+          edges.push({ from: depTask.id, to: task.id, label: "unlocks" });
         }
       }
 
@@ -56,7 +56,11 @@ export function buildProblemGraph(problem: Problem) {
             });
           }
 
-          edges.push({ from: resource.name, to: task.title, label: resource.status === "missing" ? "missing input" : "supports" });
+          edges.push({
+            from: resource.id,
+            to: task.id,
+            label: resource.status === "missing" ? "missing input" : "supports",
+          });
         }
       }
     }

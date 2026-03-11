@@ -31,6 +31,10 @@ a {
   color: inherit;
 }
 
+button {
+  font: inherit;
+}
+
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -92,7 +96,8 @@ a {
 .docs-grid,
 .detail-grid,
 .graph-layout,
-.graph-nodes {
+.graph-nodes,
+.inspector-columns {
   display: grid;
   gap: 1.25rem;
 }
@@ -109,7 +114,8 @@ a {
 
 .docs-grid,
 .detail-grid,
-.graph-layout {
+.graph-layout,
+.inspector-columns {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -128,7 +134,8 @@ a {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   line-height: 1.1;
   margin-top: 0;
 }
@@ -184,12 +191,18 @@ span {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.panel {
+.panel,
+.panel-subtle {
   background: rgba(15, 26, 45, 0.85);
   border: 1px solid var(--panel-border);
   border-radius: 1.1rem;
   padding: 1.25rem;
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.22);
+}
+
+.panel-subtle {
+  background: rgba(8, 17, 31, 0.45);
+  box-shadow: none;
 }
 
 .graph-panel {
@@ -204,6 +217,27 @@ span {
   background: rgba(8, 17, 31, 0.55);
   display: grid;
   gap: 0.35rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease, border-color 120ms ease;
+}
+
+.graph-node:hover {
+  transform: translateY(-2px);
+}
+
+.graph-node.dimmed {
+  opacity: 0.45;
+}
+
+.graph-node.linked {
+  opacity: 0.95;
+}
+
+.graph-node.selected {
+  opacity: 1;
+  border-color: var(--accent-2);
+  box-shadow: inset 0 0 0 1px rgba(120, 168, 255, 0.45);
 }
 
 .node-kind {
@@ -241,8 +275,10 @@ span {
 .problem-top h3,
 .panel h2,
 .panel h3,
+.panel h4,
 .brand,
-.graph-node strong {
+.graph-node strong,
+.graph-inspector strong {
   color: var(--text);
 }
 
@@ -283,12 +319,14 @@ span {
   color: var(--danger);
 }
 
-.status.blocked {
+.status.blocked,
+.status.missing {
   background: rgba(251, 113, 133, 0.14);
   color: var(--blocked);
 }
 
-.status.planned {
+.status.planned,
+.status.normal {
   background: rgba(167, 139, 250, 0.14);
   color: var(--planned);
 }
@@ -309,7 +347,8 @@ span {
 .chain-card,
 .sidebar-stack,
 .detail-stack,
-.leverage-list li {
+.leverage-list li,
+.graph-inspector {
   display: grid;
   gap: 0.75rem;
 }
@@ -338,7 +377,8 @@ span {
   .problems-grid,
   .docs-grid,
   .detail-grid,
-  .graph-layout {
+  .graph-layout,
+  .inspector-columns {
     grid-template-columns: 1fr;
   }
 }
