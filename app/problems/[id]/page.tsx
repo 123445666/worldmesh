@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DependencyGraph } from "../../../components/dependency-graph";
+import { ScenarioSimulator } from "../../../components/scenario-simulator";
 import { buildProblemGraph } from "../../../lib/graph-data";
 import { getBlockedTasks, getLeverageActions, problems } from "../../../lib/mock-data";
 
@@ -47,6 +48,8 @@ export default function ProblemDetailPage({ params }: { params: { id: string } }
           nodes={graph.nodes}
           edges={graph.edges}
         />
+
+        <ScenarioSimulator problem={problem} />
 
         <div className="detail-grid">
           <section className="panel">
