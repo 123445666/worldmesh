@@ -4,9 +4,19 @@
   "private": true,
   "description": "Open-source coordination platform for real-world problems.",
   "scripts": {
-    "dev": "echo 'App scaffold not yet implemented'",
-    "build": "echo 'Build step not yet implemented'",
-    "lint": "echo 'Lint not yet implemented'",
-    "test": "echo 'Tests not yet implemented'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.32",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "25.4.0",
+    "@types/react": "19.2.14",
+    "typescript": "5.9.3"
   }
 }
